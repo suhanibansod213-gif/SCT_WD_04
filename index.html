@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TaskBloom | Task 04</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Decorative Background -->
+    <div class="background-shape shape-one"></div>
+    <div class="background-shape shape-two"></div>
+
+
+    <main class="app-wrapper">
+
+        <div class="todo-card">
+
+            <!-- ================= HEADER ================= -->
+
+            <header class="app-header">
+
+                <div>
+                    <h1>TaskBloom 🌸</h1>
+
+                    <p>
+                        Task 04 • To-Do Web Application
+                    </p>
+                </div>
+
+                <div class="date-display">
+                    <span id="current-date">Today</span>
+                </div>
+
+            </header>
+
+
+            <!-- ================= PROGRESS ================= -->
+
+            <section class="progress-section">
+
+                <div class="progress-info">
+
+                    <div>
+                        <span class="progress-title">
+                            Today's Progress
+                        </span>
+
+                        <span id="progress-text">
+                            0 of 0 completed
+                        </span>
+                    </div>
+
+                    <span id="progress-percentage">
+                        0%
+                    </span>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div id="progress-fill"></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= ADD TASK ================= -->
+
+            <section class="add-task-section">
+
+                <div class="input-wrapper">
+
+                    <input
+                        type="text"
+                        id="task-input"
+                        placeholder="What needs to be done? ✨"
+                        maxlength="100"
+                    >
+
+                    <button
+                        id="add-task-btn"
+                        type="button"
+                    >
+                        + Add Task
+                    </button>
+
+                </div>
+
+
+                <div class="task-details">
+
+                    <div class="detail-group">
+
+                        <label for="task-date">
+                            📅 Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="task-date"
+                        >
+
+                    </div>
+
+
+                    <div class="detail-group">
+
+                        <label for="task-time">
+                            ⏰ Time
+                        </label>
+
+                        <input
+                            type="time"
+                            id="task-time"
+                        >
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= FILTERS ================= -->
+
+            <section class="filter-section">
+
+                <button
+                    class="filter-btn active"
+                    data-filter="all"
+                    type="button"
+                >
+                    All
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="pending"
+                    type="button"
+                >
+                    Pending
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="completed"
+                    type="button"
+                >
+                    Completed
+                </button>
+
+            </section>
+
+
+            <!-- ================= TASK LIST ================= -->
+
+            <section class="tasks-section">
+
+                <div class="tasks-header">
+
+                    <h2>
+                        My Tasks
+                    </h2>
+
+                    <span id="task-count">
+                        0 tasks
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="task-list"
+                    class="task-list"
+                >
+
+                    <!-- Tasks will be added here by JavaScript -->
+
+                </div>
+
+
+                <!-- Empty State -->
+
+                <div
+                    id="empty-state"
+                    class="empty-state"
+                >
+
+                    <div class="empty-icon">
+                        🌷
+                    </div>
+
+                    <h3>
+                        Your task garden is empty!
+                    </h3>
+
+                    <p>
+                        Add a task and watch your productivity bloom.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= CLEAR COMPLETED ================= -->
+
+            <div class="bottom-actions">
+
+                <button
+                    id="clear-completed-btn"
+                    type="button"
+                >
+                    🧹 Clear Completed
+                </button>
+
+                <button
+                    id="clear-all-btn"
+                    type="button"
+                >
+                    🗑️ Clear All
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <p class="credit">
+            Designed & Developed by
+            <strong>Suhani Bansod</strong>
+        </p>
+
+    </main>
+
+
+    <!-- ================= EDIT MODAL ================= -->
+
+    <div
+        id="edit-modal"
+        class="modal hidden"
+    >
+
+        <div class="modal-content">
+
+            <button
+                id="close-modal"
+                class="close-modal"
+                type="button"
+            >
+                ×
+            </button>
+
+            <h2>
+                ✏️ Edit Task
+            </h2>
+
+            <input
+                type="text"
+                id="edit-task-input"
+                placeholder="Edit your task"
+                maxlength="100"
+            >
+
+
+            <div class="modal-details">
+
+                <div class="detail-group">
+
+                    <label for="edit-task-date">
+                        📅 Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="edit-task-date"
+                    >
+
+                </div>
+
+
+                <div class="detail-group">
+
+                    <label for="edit-task-time">
+                        ⏰ Time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="edit-task-time"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    id="cancel-edit"
+                    type="button"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    id="save-edit"
+                    type="button"
+                >
+                    Save Changes ✨
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
